@@ -1,15 +1,26 @@
-import { ApolloProvider } from "@apollo/client";
-import client from './client';
-import Component from "./views/components/Item/component";
-
+import Div from "./components/Div";
+import { useState } from 'react';
 
 function App() {
-
+  const [isActive, setIsActive] = useState(false)
+  const handleActive = () => {
+    setIsActive(!isActive)
+  }
   return (
-    <ApolloProvider client={client}>
-      <h1>hola mundo</h1>
-      <Component />
-    </ApolloProvider>
+    <div className="m-5">
+
+      <button
+        className="btn btn-success"
+        onClick={handleActive}
+      >
+        Activar o Desactivar componente
+      </button>
+
+      {
+        isActive && <Div />
+      }
+
+    </div>
   );
 }
 
